@@ -1,0 +1,41 @@
+<div class="container" style="height:100%">
+  <div class="row">
+    
+    <div class="col-lg-8">
+      <h1 class="mt-4">All Posts</h1>
+      <hr>
+      <ul>
+				<% @posts.each do |post| %>
+					<li> 
+						<%= link_to post.title, post_path(post) %>
+					</li>
+					<hr>
+				<% end %>
+			</ul>
+      <%= link_to "Create a new Post", new_post_path, :class => "btn btn-primary" %>
+    </div>
+
+    <div class="col-md-4">
+      <!-- Search Widget -->
+          <div class="card my-4">
+            <h5 class="card-header">Search</h5>
+            <div class="card-body">
+            	<%= form_tag(posts_path, :method => "get", id: "search-form") do %>
+           			<div class="input-group">
+    					     <%= text_field_tag :search, params[:search], placeholder: "Search Recipes", :class => "form-control" %>
+    					     <span class="input-group-btn">
+    						    <%= submit_tag("Go!", :class=>"btn btn-secondary", :name=>nil) %>
+						        </span>
+					       </div>
+				      <% end %>
+				      <% if @posts.blank? %>
+				        <h4>There are no posts containing the term <%= params[:search] %>.</h4>
+				      <% end %>
+            </div>
+          </div>
+    </div>
+
+  </div>
+  <!-- /.row -->
+</div>
+<!-- /.container -->

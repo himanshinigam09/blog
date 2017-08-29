@@ -1,0 +1,36 @@
+<div class="container">
+	<div class="row">
+
+        <!-- Post Content Column -->
+        <div class="col-lg-8">
+
+          <!-- Title -->
+          	<h1 class="mt-4">New Post</h1>
+			<hr>
+
+	        <%= form_for(@post) do |f| %>
+				<div class="card my-4">
+					<h5 class="card-header"><%= f.label :title%></h5><br />
+					<div class="card-body">
+						<%= f.text_field :title, :class => "form-control" %>
+					</div>
+				
+					<h5 class="card-header"><%= f.label :body %></h5><br />
+					<div class="card-body">
+						<%= f.text_area :body, :class => "form-control"  %>
+					</div>
+				
+					<h5 class="card-header"><%= f.label :image %></h5><br />
+					<div class="card-body">
+			  			<%= f.file_field :image %><br />
+			  		</div>
+			  	</div>
+				<%= f.submit 'Create Post', :class => 'btn btn-primary' %>
+				<%= link_to "Back", posts_path, :class => "btn btn-primary" %><br /><br />
+			<% end %>
+		</div>
+    </div>
+</div>
+     
+
+   
